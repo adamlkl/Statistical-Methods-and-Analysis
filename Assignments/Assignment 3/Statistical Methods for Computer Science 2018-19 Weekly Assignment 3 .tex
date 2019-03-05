@@ -1,0 +1,234 @@
+\documentclass[12pt]{article}%
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
+{geometry}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{changepage}
+\usepackage{amssymb}
+\usepackage{graphicx}%
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+\graphicspath{ {./images/} }
+
+\definecolor{lightgray}{RGB}{214, 219, 223}
+\definecolor{limegreen}{RGB}{11, 83, 69}
+\definecolor{blue}{RGB}{0, 70, 255}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{lightgray},   
+    commentstyle=\color{limegreen},
+    keywordstyle=\color{blue}
+}
+ 
+\lstset{style=mystyle}
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\@title}
+
+  \@author
+  \@date
+\end{flushleft}\egroup
+}
+\makeatother
+
+
+\begin{document}
+
+\title{Weekly Assignment 3}
+\author{Leong Kai Ler \\ 15334636 \\   }
+\date{February 13, 2019}
+\maketitle
+
+\section*{Question 1}
+Say we roll a fair 6-sided die six times. Using the fact that each roll is an independent random event, what is the probability that we roll: \\
+ 
+\subsection*{Problem part a}
+The sequence 1,1,2,2,3,3 ?
+\subsection*{Solution part a}
+\begin{eqnarray*}
+S & = & \{(1,1,1,1,1,1),(1,1,1,1,1,2), \cdots ,(6,6,6,6,6,6)\}; \\
+\abs{S} & = & 6^6 \\
+		& = & 46656 \\
+\end{eqnarray*}
+Let $E$ be the event of rolling the sequence ${(1,1,2,2,3,3)}$. Since $E$ is unique sequence in $S$,
+
+\begin{eqnarray*}
+\abs{E} & = & 1 \\
+P(E) & = & \frac{\abs{E}}{\abs{S}} \\
+	 & = & \frac{1}{6^6} \\ 
+	 & = & \frac{1}{46656} \\
+	 & \approx & 2.143347 * 10^{-5}
+\end{eqnarray*}
+
+\subsection*{Problem part b}
+A three exactly 4 times?
+\subsection*{Solution part b}
+Let $E$ be the event of rolling a three exactly 4 times. \\
+Choose 4 dice from 6, gives us $6C4$ configurations. For the remaining 2 dices, we can get any number except 3. This gives us $5^2$ possible configurations. Hence,
+\begin{eqnarray*}
+\abs{E} & = & 6C2 * 5^2 \\
+ 		& = & 375 \\
+P(E) & = & \frac{\abs{E}}{\abs{S}} \\
+	 & = & \frac{375}{6^6} \\
+	 & = & \frac{125}{15552} \\
+	 & \approx & 0.00804 
+\end{eqnarray*}
+\subsection*{Problem part c}
+A single 1.
+\subsection*{Solution part c}
+Let $E$ be the event of rolling a a single 1. \\
+Choose 1 dice from 6, gives us $6C1$ configurations. For the remaining 5 dices, we can get any number except 1. This gives us $5^5$ possible configurations. Hence,
+\begin{eqnarray*}
+\abs{E} & = & 6C1 * 5^5 \\
+ 		& = & 18750 \\
+P(E) & = & \frac{\abs{E}}{\abs{S}} \\
+	 & = & \frac{18750}{6^6} \\
+	 & = & \frac{3125}{7776} \\
+	 & \approx & 0.40188
+\end{eqnarray*}
+\subsection*{Problem part d}
+One or more 1’s?
+\subsection*{Solution part d}
+Since outcome is independent, let $E$ be the event of rolling no 1s and $F$ be the event of rolling one or more 1s. 
+\begin{eqnarray*}
+P(S) & = & P(E) + P(F) \\
+P(F) & = & 1 - P(E)
+\end{eqnarray*}
+Since we don't get 1 in any roll, that means we have a $\frac{5}{6}$ of rolling other numbers in every dice roll. Hence,
+\begin{eqnarray*}
+P(E) & = & (\frac{5}{6})^6 \\
+P(F) & = & 1 - P(E) \\
+	 & = & 1 - (\frac{5}{6})^6 \\
+	 & \approx & 0.6651 
+\end{eqnarray*}
+\newpage
+\section*{Question 2}
+Suppose one 6-sided and one 20-sided die are rolled. Let A be the event that the first die comes up 1 and B that the sum of the dice is 2. Are these events independent ? Explain using the formal definition of independence.
+\subsection*{Solution}
+Two events are not independent if $P(E \cap G) \neq P(E)P(G)$. If the first dice is 1, that means the second dice must be 1 for the sum of both dice to be 2. So, let 
+\begin{itemize}
+\item A = event that the first dice comes up 1.
+\item B = event that the sum of the dice is 2.
+\item C = event that the second dice comes up 1.
+\end{itemize}
+\begin{eqnarray*}
+P(A \cap B) & = & P(A) * P(C) \\
+			& = & \frac{1}{6} * \frac{1}{20} \\
+			& = & \frac{1}{120} \\
+B & = & \{(1,1)\} \\
+\abs{B} & = & 1 \\
+P(B) & = & \frac{1}{1} \\
+	 & = & 1 \\
+P(A) * P(B) & = & \frac{1}{20} * \frac{1}{1} \\
+			& = & \frac{1}{20}
+\end{eqnarray*}
+Since $P(A \cap B) \neq P(A)P(B)$, these events are not independent. 
+ 
+\newpage
+\section*{Question 3}
+Say a hacker has a list of n distinct password candidates, only one of which will successfully log her into a secure system.
+\subsection*{Problem part a}
+If she tries passwords from the list uniformly at random, deleting those passwords that do not work, what is the probability that her first successful login will be (exactly) on her k-th try?
+\subsection*{Solution part a}
+There is a $\frac{1}{n}$ chance of successful logging in at first try, so, in other words $\frac{n-1}{n}$ to get it wrong. Every consecutive guess increases the possibility as there are less password to try, eg. on $2^{nd}$ try, possibility of successful logging in is $\frac{1}{n-1}$. Hence, let 
+\begin{itemize}
+\item $P(L) =$ probability of successful logging in at $k^{th}$ try.  
+\item $P(F) =$ possibility of failing before $k^{th}$ try.
+\item $\frac{1}{n-(k-1)} =$ remaining number of passwords at $k^th$ try
+\end{itemize}
+\begin{eqnarray*}
+P(L) & = & P(F) * \frac{1}{n-(k-1)} \\
+     & = & (\frac{n-1}{n} * \frac{n-2}{n-1} \cdots * \frac{n-(k-1)}{(n-(k-2))}) * \frac{1}{n-(k-1)} \\
+     & = & \frac{1}{n}
+\end{eqnarray*}
+Notice that the denominator of the former fraction always cancels out with the numerator of the next fraction. As a result, the possibility of successful logging in at $k^{th}$ try, $P(L)$ is $\frac{1}{n}$.
+\subsection*{Problem part b}
+When n = 6 and k = 3 what is the value of this probability ?
+\subsection*{Solution part b}
+Using the formula given in part(a), with $n = 6$ and $k = 3$:
+\begin{eqnarray*}
+P(L) & = & \frac{5}{6} * \frac{4}{5} * \frac{1}{4} \\
+	 & = & \frac{1}{6} \\
+	 & \approx & 0.1667
+\end{eqnarray*}
+
+\subsection*{Problem part c}
+Now say the hacker tries passwords from the list at random, but does not delete previously tried passwords from the list. She stops after her first successful login attempt. What is the probability that her first successful login will be (exactly) on her k-th try?
+\subsection*{Solution part c}
+For this case, the probability does not increase after every consecutive tries as failed passwords are not deleted. Hence, probability of successfully logging in is always maintained at $\frac{1}{n}$ and vice versa. Hence, let
+\begin{itemize}
+\item $P(L) =$ probability of successful logging in at $k^{th}$ try.  
+\item $P(F) =$ possibility of failing before $k^{th}$ try.
+\end{itemize}
+\begin{eqnarray*}
+P(L) & = & P(F) * \frac{1}{n} \\
+	 & = & (1 -\frac{1}{n})^{k-1} * \frac{1}{n} \\
+	 & = & (\frac{n-1}{n})^{k-1} * \frac{1}{n} 	 
+\end{eqnarray*}
+\subsection*{Problem part d}
+When n = 6 and k = 3 what is the value of this probability ? \\
+Hint: use the fact that the outcome of each try is an independent random event (since passwords are selected uniformly at random at each attempt)
+\subsection*{Solution part d}
+Using the formula given in part(a), with $n = 6$ and $k = 3$:
+\begin{eqnarray*}
+P(L) & = & (\frac{n-1}{n})^{k-1} * \frac{1}{n} \\
+	 & = & (\frac{6-1}{6})^{3-1} * \frac{1}{6} \\
+     & = & (\frac{5}{6})^2 * \frac{1}{6} \\
+     & = & \frac{25}{216} \\
+     & \approx & 0.1157  
+\end{eqnarray*}
+\newpage
+\section*{Question 4}
+A website wants to detect if a visitor is a robot. They decide to deploy three CAPTCHA tests that are hard for robots and if the visitor fails in one of the tests, they are flagged as a possible robot. The probability that a human succeeds at a single test is 0.95, while a robot only succeeds with probability 0.3. Assume all tests are independent.
+\subsection*{Problem part a}
+If a visitor is actually a robot, what is the probability they get flagged?
+\subsection*{Solution part a}
+Let $E$ be the event of passing all 3 tests and $F$ be the event of failing at least one.
+\begin{eqnarray*}
+P(E) + P(F) & = & 1 \\
+P(F) & = & 1 - P(E) \\
+	 & = & 1 - (0.3)^3 \\
+	 & = & 0.9730
+\end{eqnarray*}
+So, there is a 0.9730 probability that a robot will get flagged.
+\subsection*{Problem part b}
+If a visitor is human, what is the probability they get flagged?
+\subsection*{Solution part b}
+Let $E$ be the event of passing all 3 tests and $F$ be the event of failing at least one.
+\begin{eqnarray*}
+P(E) + P(F) & = & 1 \\
+P(F) & = & 1 - P(E) \\
+	 & = & 1 - (0.95)^3 \\
+	 & = & 0.1426
+\end{eqnarray*}
+So, there is a 0.1426 probability that a human will get flagged.
+\subsection*{Problem part c}
+The fraction of visitors on the site that are robots is 1/10. Suppose a visitor gets
+flagged. What is the probability that visitor is a robot? \\ Hint: use Bayes Rule.
+\subsection*{Solution part c}
+Let
+\begin{itemize}
+\item $P(R) =$ Probability of visitors being robot $= 0.1$
+\item $P(T) =$ Probability of getting flagged 
+\item $P(T|R) =$ Probability of getting flagged given it is a robot $= 0.9730$
+\item $P(R|T) =$ Probability of being a robot if flagged 
+\end{itemize}
+\begin{eqnarray*}
+P(T)   & = & (P(T|R)*P(R)) + (P(T|R^c)*P(R^c)) \\
+       & = & (0.9730 * 0.1) + (0.1426 * 0.9) \\
+       & \approx & 0.2256 \\
+P(R|T) & = & \frac{P(T|R)*P(R)}{P(T)} \\
+	   & = & \frac{0.9730 * 0.1}{0.22564} \\
+	   & \approx & 0.4313         
+\end{eqnarray*}
+Hence, if visitor is flagged, possibility of it being a robot is $0.4313$.
+\end{document}

@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}%
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
+{geometry}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{changepage}
+\usepackage{amssymb}
+\usepackage{graphicx}%
+\usepackage{lipsum}
+
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\@title}
+
+  \@author
+  \@date
+\end{flushleft}\egroup
+}
+\makeatother
+
+
+\begin{document}
+
+\title{Weekly Assignment 1}
+\author{Leong Kai Ler \\ 15334636 \\   }
+\date{January 28, 2019}
+\maketitle
+
+\section*{Question 1}
+A substitution cypher is derived from orderings of the first 10 letters of the alphabet. How many ways can the 10 letters be ordered if each letter appears exactly once and:
+ 
+\subsection*{Problem part a}
+There are no other restrictions?
+
+\subsection*{Solution part a}
+Since there are 10 alphabet letters to choose from and each one of them can only represent another letter in the substitution cypher, we can choose from 10 letters to represent the first letter in the substitution cypher. We keep on choosing from the remaining 9 letters to represent another letter in the substitution cypher and so on. So, by product rule,
+\begin{equation} 
+ 10 * 9 * 8 * .. * 1 = 10! = 3628800 
+\end{equation}
+ We have 3628800 different ways of ordering the letters in the substitution cypher. 
+ 
+\subsection*{Problem part b}
+The letters E and F must be next to each other (but in any order)?
+\subsection*{Solution part b}
+We divide the substitution cypher configurations into 10 positions to be filled with letters.
+
+Letters E and F has to be next to each other, and they can be swap around. Thus, if the first letter(either E or F) occupies the first spot, then the other one must be on its left or right. This means the other 8 remaining letters in the substitution cypher can be chosen from 8! different permutations, and this can happen between position 2 to 9 so we get \begin{math}2 * 8! * 8 \end{math} permutations. \\
+
+If first letter is in position 1, then the second letter must be in position 2, the remaining letters can then be ordered in 8! different permutations. The same case happens if the first letter is in position 10, and the second letter must be in position 9. \\ 
+
+Hence, 
+\begin{equation}
+2 * 8! * 8 + 2 * 8! = 645120 + 80640 = 725760 
+\end{equation} 
+In total, there are 725760 different ways to order the letters if E and F must be together. 
+\subsection*{Problem part c}
+How many different letter arrangements can be formed from the letters BANANA ?
+\subsection*{Solution part c}
+BANANA consists of 6 letters, so there are 6! ways to rearrange the letters. However, we must consider that there are only 3 distinct letters: A,B,N, where there are 1B, 2Ns and 3As. To form different arrangements, we need to disregard the order of the Ns and As. Hence,
+\begin{equation}
+\frac{6!}{2!*3!}=\frac{720}{12}=60
+\end{equation}
+\subsection*{Problem part d}
+How many different letter arrangements can be formed by drawing 3 letters from ABCDE ?
+\subsection*{Solution part d}
+We choose 3 letters from 5, so \begin{math}5C3=10\end{math} different letter arrangements can be formed. 
+\newpage
+\section*{Question 2}
+A 6-sided die is rolled four times.
+\subsection*{Problem part a}
+How many outcome sequences are possible, where we say, for instance, that the
+outcome is 3, 4, 3, 1 if the first roll landed on 3, the second on 4, the third on 3, and the fourth on 1?
+
+\subsection*{Solution part a}
+Every dice rolled can produce 6 possible numbers, namely 1 to 6. So rolling it by n times will produce \begin{math}6^n\end{math} possible outcome sequences. 
+\noindent\newline\newline
+Hence, rolling the dice by 4 times will result in \begin{math}6^4=1296\end{math} possible outcome sequences.
+
+\subsection*{Problem part b}
+How many of the possible outcome sequences contain exactly two 3’s ?
+\subsection*{Solution part b}
+We consider the cases of where we find the first 3. If the first dice rolled results in a 3, then only one of the next 3 dice rolled can yield another 3. However, if the first dice rolled doesn't result in a 3 but the second does, then the possibility of getting the another 3 decreases to the only 2 remaining dice to be rolled. So, we can see that the later we get the first 3, the slimmer the chance of getting two 3s, i.e every consecutive dice rolled that results in a number other than 3 will decreases the chances of getting two 3s by 1. Hence, we have 3! possible outcome sequences with two 3s. Alternatively, we can summarize it as choosing 2 dice with 3s from 4, hence 4C2. 
+\\\noindent\\
+Moreover, for every outcome with two 3s, there are two times, the dice rolled must result in numbers other than 3, namely 1,2,4,5,6. This will gives us \begin{math}5^2\end{math} possible sequences.
+\begin{equation}
+    3! * 5^2 = 4C2 * 5^2 = 6 * 25 = 150
+\end{equation}
+Hence, the possible outcome sequences contain exactly two 3’s is 150.
+
+\subsection*{Problem part c}
+How many contain at least two 3’s ?
+\subsection*{Solution part c}
+We consider 3 cases for the outcome sequences that fulfil the condition:
+\begin{itemize}
+    \item Outcome sequences with exactly two 3s (as done above). \\Possible outcomes = 150.
+    \item Outcome sequences with exactly three 3s.\\Choose 3 dice from 4 with that result in a 3, we get \begin{math}4C3\end{math} possible outcomes. As for the remaining dice that did not result in a 3, there are 5 possible values possible. Hence the possible outcomes for this case is \begin{math}4C3 * 5 = 4 * 5 = 20\end{math}. 
+    \item Outcome sequences with exactly four 3s. \\Since all four dice rolled results in 3, the possible outcome is \begin{math}4C4=1\end{math}.
+\end{itemize}
+By summing up all the possible sequences from the 3 above cases, we get \begin{math}150 + 20 + 1 = 171\end{math} possible outcome sequences with at least two 3s.
+\newpage
+\section*{Question 3}
+You are counting cards in a card game that uses two decks of cards. Each deck has 4 cards (the ace from each of 4 suits), so there are 8 cards total. Cards are only distinguishable based on their suit, not which deck they came from.
+
+\subsection*{Problem part a}
+In how many distinct ways can the 8 cards be ordered?
+\subsection*{Solution part a}
+There are \begin{math}8!\end{math} ways to order the cards without any restrictions. However, to order the cards distinctively, the order of every card pairs with same suits must be disregarded. Hence, 
+\begin{equation}
+\frac{8!}{2!*2!*2!*2!}=\frac{40320}{16}=2520
+\end{equation}
+There are 2520 distinct ways to order the 8 cards.
+
+\subsection*{Problem part b}
+You are dealt two cards. How many distinct pairs of cards can you be dealt? Note: the order of the two cards you are dealt does not matter.
+\subsection*{Solution part b}
+To form a distinct pair of cards, we disregard the order they are picked and card pairs with same suits. \\
+Pick the first card from the deck, ie let's say a card with diamond suit, there are 3 other cards with different suits to form another distinct pair, namely clubs, hearts and spades. Continue picking another card with different suits, now there are only 2 suit options for it to form different distinct pairs. So, for every consecutive different card suits picked, there will be one less option for it to form a different distinct pair. Hence, 
+\begin{equation}
+3! = 3 * 2 * 1 = 6
+\end{equation} 
+There are 6 distinct pairs that can be dealt. 
+
+\subsection*{Problem part c}
+You are dealt two cards. Cards with suits hearts and diamonds are considered “good” cards. How many ways can you get two “good” cards? Order does not matter.
+\subsection*{Solution part c}
+Consider the following cases with good card pairs:
+\begin{itemize}
+	\item Getting two good cards with same suits, namely two hearts or two diamonds. That gives us 2 possible card pairs, since we disregard the order.
+	\item Getting two good cards with different suits, namely one diamond and one heart. That gives us only 1 pair since the order of drawing the cards is not important.
+\end{itemize}
+Hence, by summing up the outcomes from each cases, we get \begin{math}2+1=3\end{math} ways of getting good card pairs.
+\end{document}

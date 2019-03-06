@@ -110,7 +110,7 @@ Since $E[Y] \neq E[X_i]$, i.e. E[Y] is the sum of $E[X_i]$ by n times, E[Y] is d
 \subsection*{Problem Part c:}
 What is $E[\frac{1}{n}Y]$ ?
 \subsection*{Solution Part c:}
-Using linearity o expectation: 
+Using linearity of expectation: 
 \begin{eqnarray*}
 E[\frac{1}{n}Y] & = & E[\frac{1}{n}\sum_{i=1}^{n} X_i] \\
 	 & = & \frac{1}{n}\sum_{i=1}^{n} E[X_i] \\
@@ -126,9 +126,9 @@ Hints: use linearity of the expectation and the fact that people are sampled ind
 \begin{eqnarray*}
     Var[Y]  & = & n * Var[X] \\
     		 & = & n * 0.24 \\
-    Var[\frac{1}{n}Y]  & = & \frac{1}{n}Var[X] \\
-    				   & = & \frac{1}{n} * n * Var[X] \\
-    				   & = & Var[X]
+    Var[\frac{1}{n}Y]  & = & n * Var[\frac{1}{n} * X] \\
+    				   & = & \frac{1}{n}^2 * n * Var[X] \\
+    				   & = & \frac{Var[X]}{n}   			  
 \end{eqnarray*}
 \newpage
 \section*{Question 3}
@@ -198,14 +198,15 @@ For $X_1$ and $X_2$ to be independent, we need to prove: \begin{equation*}
 P(X_1=x_1 \cap X_2=x_2) = P(X_1=x_1) * P(X_2=x_2)
 \end{equation*}
 for all $x_1 \in R_{X_1}$ and $x_2 \in R_{X_2}$. \\ \\
-Take an example of $P(X_2=1)$ and $P(X_2=1 | X_1=1)$:
+Take a counter example of $P(X_2=1 \cap X_1=1)$:
 \begin{eqnarray*}
+P(X_2=1 \cap X_1=1) & = & \frac{5}{39} \\
+P(X_1=1) & = & \frac{15}{39} \\
 P(X_2=1) & = & \frac{15}{39} \\
-P(X_2=1 | X_1=0) & = & \frac{P(X_1=0 | X_2=1)}{P(X_1=0)} \\
-				 & = & \frac{\frac{10}{39}}{\frac{24}{39}} \\
-				 & = &\frac{5}{12} 
+P(X_2=1)*P(X_1=1) & = & \frac{15}{39} * \frac{15}{39} \\
+				  & = & \frac{25}{169} 
 \end{eqnarray*}
-Since $P(X_2=1)\neq P(X_2=1 | X_1=0)$, $X_1$ and $X_2$ are not independent. 
+Since $P(X_2=1 \cap X_1=1) \neq P(X_2=1)*P(X_1=1)$, $X_1$ and $X_2$ are not independent. 
 \subsection*{Problem Part c:}
 Calculate $E[X_2]$
 \subsection*{Solution Part c:}

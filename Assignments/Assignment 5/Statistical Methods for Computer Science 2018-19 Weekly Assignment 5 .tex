@@ -78,21 +78,58 @@ Suppose you carry out a poll following an election. You do this by selecting n p
 \subsection*{Problem Part a:}
 Calculate $E[X_i]$ and $Var(X_i)$. \\ 
 \subsection*{Solution Part a:}
-
+\begin{eqnarray*}
+	E[X_i] & = & 0.6 * 1 + 0.4 * 0 \\
+		   & = & 0.6 \\
+	E[(X_i)^2] & = & 0.6 * 1^2 + 0.4 * 0 \\
+			   & = & 0.6 \\
+    Var[X_i] & = & E[(X_i)^2] - E[X_i]^2 \\
+    		 & = & 0.6 - 0.6^2 \\
+    		 & = & 0.24
+\end{eqnarray*}
+or Using Bernoulli random variable method:
+\begin{eqnarray*}
+	E[X_i] & = & p \\
+		   & = & 0.6 \\
+    Var[X_i] & = & p * (1-p) \\
+    		 & = & 0.6 * (1-0.6) \\
+    		 & = & 0.6 * 0.4 \\
+    		 & = & 0.24
+\end{eqnarray*}
 \subsection*{Problem Part b:}
 Let $Y = \sum_{i=1}^{n} X_i$. \\
 What is $E[Y]$ ? Is it the same as $E[X]$ or different, and why ?
 \subsection*{Solution Part b:}
-
+\begin{eqnarray*}
+E[Y] & = & E[\sum_{i=1}^{n} X_i] \\
+	 & = & \sum_{i=1}^{n} E[X_i] \\
+	 & = & n * E[X_i] \\
+	 & = & n * 0.6
+\end{eqnarray*}
+Since $E[Y] \neq E[X_i]$, i.e. E[Y] is the sum of $E[X_i]$ by n times, E[Y] is different compared to $E[X_i]$.
 \subsection*{Problem Part c:}
 What is $E[\frac{1}{n}Y]$ ?
 \subsection*{Solution Part c:}
-
+Using linearity o expectation: 
+\begin{eqnarray*}
+E[\frac{1}{n}Y] & = & E[\frac{1}{n}\sum_{i=1}^{n} X_i] \\
+	 & = & \frac{1}{n}\sum_{i=1}^{n} E[X_i] \\
+	 & = & \frac{1}{n} * n * E[X_i] \\
+	 & = & 0.6 \\
+	 & = & E[X_i]
+\end{eqnarray*}
+Hence, $E[\frac{1}{n}Y]$ can be simplified into $E[X_i]$.
 \subsection*{Problem Part d:}
 What is the variance of $\frac{1}{n}Y$ (express in terms of $Var(X)$)? \\
 Hints: use linearity of the expectation and the fact that people are sampled independently.
 \subsection*{Solution Part d:}
-
+\begin{eqnarray*}
+    Var[Y]  & = & n * Var[X] \\
+    		 & = & n * 0.24 \\
+    Var[\frac{1}{n}Y]  & = & \frac{1}{n}Var[X] \\
+    				   & = & \frac{1}{n} * n * Var[X] \\
+    				   & = & Var[X]
+\end{eqnarray*}
 \newpage
 \section*{Question 3}
 Suppose that 2 balls are chosen without replacement from an urn consisting of 5 white and 8 red balls. Let $X_i$ equal 1 if the $i^{th}$ ball selected is white, and let it equal 0 otherwise.
@@ -164,7 +201,7 @@ for all $x_1 \in R_{X_1}$ and $x_2 \in R_{X_2}$. \\ \\
 Take an example of $P(X_2=1)$ and $P(X_2=1 | X_1=1)$:
 \begin{eqnarray*}
 P(X_2=1) & = & \frac{15}{39} \\
-P(X_2=1 | X_1=0) & = & \frac{P(X_1=0 | X_2=1)}{P(X_1=0} \\
+P(X_2=1 | X_1=0) & = & \frac{P(X_1=0 | X_2=1)}{P(X_1=0)} \\
 				 & = & \frac{\frac{10}{39}}{\frac{24}{39}} \\
 				 & = &\frac{5}{12} 
 \end{eqnarray*}
@@ -173,7 +210,8 @@ Since $P(X_2=1)\neq P(X_2=1 | X_1=0)$, $X_1$ and $X_2$ are not independent.
 Calculate $E[X_2]$
 \subsection*{Solution Part c:}
 \begin{eqnarray*}
-E[X_2] & = & \frac{15}{39} * 1 + \frac{24}{39} * 0 \\
+E[X_2] & = & P(X_2 = x_2) \\
+	   & = & \frac{15}{39} * 1 + \frac{24}{39} * 0 \\
 	   & = & \frac{5}{13} \\
 	   & \approx & 0.3846
 \end{eqnarray*}

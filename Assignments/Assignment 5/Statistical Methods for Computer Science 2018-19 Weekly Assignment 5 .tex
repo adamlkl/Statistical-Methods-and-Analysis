@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}%
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
+{geometry}
+\usepackage{times}
+\usepackage{amsmath, nccmath}
+\usepackage{changepage}
+\usepackage{amssymb}
+\usepackage{graphicx}%
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+\graphicspath{ {./images/} }
+
+\definecolor{lightgray}{RGB}{214, 219, 223}
+\definecolor{limegreen}{RGB}{11, 83, 69}
+\definecolor{blue}{RGB}{0, 70, 255}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{lightgray},   
+    commentstyle=\color{limegreen},
+    keywordstyle=\color{blue}
+}
+ 
+\lstset{style=mystyle}
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\@title}
+
+  \@author
+  \@date
+\end{flushleft}\egroup
+}
+\makeatother
+
+
+\begin{document}
+
+\title{Weekly Assignment 5}
+\author{Leong Kai Ler \\ 15334636 \\   }
+\date{March 5, 2019}
+\maketitle
+
+\section*{Question 1}
+A box contains 5 red and 5 blue marbles. Two marbles are withdrawn randomly. If they are the same color, then you win \$$1.10$; if they are different colors, then you lose \$$1.00$. Calculate:
+\subsection*{Problem Part a:}
+The expected value of the amount you win.
+\subsection*{Solution Part a:}
+There are two possibilities that satisfy the event, either we draw two red marbles or two blue ones. Let say we want to draw two red marbles, there are $\frac{5}{10}$ chance to get a red marble in first draw and $\frac{4}{9}$ of getting a second one. Same calculations apply for the getting two blue marbles. Hence, probability of getting two marbles of same color is $\frac{5}{10}*\frac{4}{9}*2=\frac{4}{9}$.
+\begin{eqnarray*}
+E[X] & = & P(E) * 1.1 + (1-P(E))*(-1.0) \\
+     & = & \frac{4}{9} * 1.1 + \frac{5}{9} * (-1.0) \\
+     & = & -\frac{1}{15} \\
+     & \approx & -0.0667
+\end{eqnarray*}
+\subsection*{Problem Part b:}
+The variance of the amount you win.
+\subsection*{Solution Part b:}
+\begin{eqnarray*}
+E[X^2] & = & \frac{4}{9} * 1.1^2 + \frac{5}{9} * (-1.0)^2 \\
+	   & = & \frac{82}{75}\\
+Var[X] & = & E[X^2] - (E[X])^2 \\
+	   & = & \frac{82}{75} - (-\frac{1}{15})^2 \\
+	   & = & \frac{49}{45} \\
+	   & \approx & 1.08889
+\end{eqnarray*}
+
+\newpage
+\section*{Question 2}
+Suppose you carry out a poll following an election. You do this by selecting n people uniformly at random and asking whether they voted or not, letting Xi = 1 if person i voted and Xi = 0 otherwise. Suppose the probability that a person voted is 0.6.
+\subsection*{Problem Part a:}
+Calculate $E[X_i]$ and $Var(X_i)$. \\ 
+\subsection*{Solution Part a:}
+
+\subsection*{Problem Part b:}
+Let $Y = \sum_{i=1}^{n} X_i$. \\
+What is $E[Y]$ ? Is it the same as $E[X]$ or different, and why ?
+\subsection*{Solution Part b:}
+
+\subsection*{Problem Part c:}
+What is $E[\frac{1}{n}Y]$ ?
+\subsection*{Solution Part c:}
+
+\subsection*{Problem Part d:}
+What is the variance of $\frac{1}{n}Y$ (express in terms of $Var(X)$)? \\
+Hints: use linearity of the expectation and the fact that people are sampled independently.
+\subsection*{Solution Part d:}
+
+\newpage
+\section*{Question 3}
+Suppose that 2 balls are chosen without replacement from an urn consisting of 5 white and 8 red balls. Let $X_i$ equal 1 if the $i^{th}$ ball selected is white, and let it equal 0 otherwise.
+\subsection*{Problem Part a:}
+Give the joint probability mass function of $X_1$ and $X_2$
+\subsection*{Solution Part a:}
+To calculate joint probability mass function of $X_1$ and $X_2$, we need to compute their distributions.
+\begin{itemize}
+\item 
+\begin{fleqn}[\parindent]
+\begin{equation*}
+\begin{split}
+P(X_1 = 0, X_2 = 0) = & \frac{8}{13}*\frac{7}{12}\\
+					= & \frac{14}{39}
+\end{split}
+\end{equation*}
+\end{fleqn}
+\item 
+\begin{fleqn}[\parindent]
+\begin{equation*}
+\begin{split}
+P(X_1 = 1, X_2 = 0) = & \frac{5}{13}*\frac{8}{12}\\
+					= & \frac{10}{39}
+\end{split}
+\end{equation*}
+\end{fleqn}
+\item 
+\begin{fleqn}[\parindent]
+\begin{equation*}
+\begin{split}
+P(X_1 = 0, X_2 = 1) = & \frac{8}{13}*\frac{5}{12}\\
+					= & \frac{10}{39}
+\end{split}
+\end{equation*}
+\end{fleqn}
+\item 
+\begin{fleqn}[\parindent]
+\begin{equation*}
+\begin{split}
+P(X_1 = 1, X_2 = 1) = & \frac{5}{13}*\frac{4}{12}\\
+					= & \frac{5}{39}
+\end{split}
+\end{equation*}
+\end{fleqn}
+\end{itemize}
+Hence, the tabular form of joint pmf would look as illustrated below: \\
+\renewcommand{\arraystretch}{2}
+\begin{center}
+\begin{tabular}[5pt]{| r | c | c | c |}
+\hline
+ & $X_1 = 0$ & $X_1 = 1$ & $P(X_1 = x_1)$ \\
+\hline
+$X_2 = 0$ & $\frac{14}{39}$ & $\frac{10}{39}$ & $\frac{24}{39}$\\
+\hline 
+$X_2 = 1$ & $\frac{10}{39}$ & $\frac{5}{39}$ & $\frac{15}{39}$\\
+\hline
+$P(X_2 = x_2)$ & $\frac{24}{39}$ & $\frac{15}{39}$ & $1$ \\
+\hline 
+\end{tabular}
+\end{center}
+\renewcommand{\arraystretch}{1}
+\subsection*{Problem Part b:}
+Are $X_1$ and $X_2$ independent ? (Use the formal definition of independence to determine this)
+\subsection*{Solution Part b:}
+For $X_1$ and $X_2$ to be independent, we need to prove: \begin{equation*}
+P(X_1=x_1 \cap X_2=x_2) = P(X_1=x_1) * P(X_2=x_2)
+\end{equation*}
+for all $x_1 \in R_{X_1}$ and $x_2 \in R_{X_2}$. \\ \\
+Take an example of $P(X_2=1)$ and $P(X_2=1 | X_1=1)$:
+\begin{eqnarray*}
+P(X_2=1) & = & \frac{15}{39} \\
+P(X_2=1 | X_1=0) & = & \frac{P(X_1=0 | X_2=1)}{P(X_1=0} \\
+				 & = & \frac{\frac{10}{39}}{\frac{24}{39}} \\
+				 & = &\frac{5}{12} 
+\end{eqnarray*}
+Since $P(X_2=1)\neq P(X_2=1 | X_1=0)$, $X_1$ and $X_2$ are not independent. 
+\subsection*{Problem Part c:}
+Calculate $E[X_2]$
+\subsection*{Solution Part c:}
+\begin{eqnarray*}
+E[X_2] & = & \frac{15}{39} * 1 + \frac{24}{39} * 0 \\
+	   & = & \frac{5}{13} \\
+	   & \approx & 0.3846
+\end{eqnarray*}
+\subsection*{Problem Part d:}
+Calculate $E[X_2|X1 = 1]$
+\subsection*{Solution Part d:}
+\begin{eqnarray*}
+E[X_2|X1 = 1] & = & \frac{P(X_2 = x_2)}{P(X_1=1)} \\
+	   & = & \frac{\frac{5}{39}*1+\frac{10}{39}*0}{\frac{15}{39}} \\
+	   & = & \frac{1}{3} \\
+	   & \approx & 0.3333
+\end{eqnarray*}
+\end{document}

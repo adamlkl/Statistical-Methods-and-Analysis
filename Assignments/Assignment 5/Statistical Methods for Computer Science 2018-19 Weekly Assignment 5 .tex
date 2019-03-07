@@ -100,6 +100,8 @@ or Using Bernoulli random variable method:
 Let $Y = \sum_{i=1}^{n} X_i$. \\
 What is $E[Y]$ ? Is it the same as $E[X]$ or different, and why ?
 \subsection*{Solution Part b:}
+(Not sure if $E[X]$ is actually a typo for $E[X_i]$, so i will do both versions.) \\
+\subsubsection*{$E[X_i]$ version:}
 \begin{eqnarray*}
 E[Y] & = & E[\sum_{i=1}^{n} X_i] \\
 	 & = & \sum_{i=1}^{n} E[X_i] \\
@@ -107,6 +109,12 @@ E[Y] & = & E[\sum_{i=1}^{n} X_i] \\
 	 & = & n * 0.6
 \end{eqnarray*}
 Since $E[Y] \neq E[X_i]$, i.e. E[Y] is the sum of $E[X_i]$ by n times, E[Y] is different compared to $E[X_i]$.
+\subsubsection*{$E[X]$ version:}
+By linearity, 
+\begin{equation*}
+E[X] = \sum_{i=1}^{n}E[X_i] = E[\sum_{i=1}^{n} X_i]= E[Y]
+\end{equation*}
+Hence, $E[X]$ is the same as $E[Y]$.
 \subsection*{Problem Part c:}
 What is $E[\frac{1}{n}Y]$ ?
 \subsection*{Solution Part c:}
@@ -118,18 +126,27 @@ E[\frac{1}{n}Y] & = & E[\frac{1}{n}\sum_{i=1}^{n} X_i] \\
 	 & = & 0.6 \\
 	 & = & E[X_i]
 \end{eqnarray*}
-Hence, $E[\frac{1}{n}Y]$ can be simplified into $E[X_i]$.
+Hence, $E[\frac{1}{n}Y]$ can be simplified into $E[X_i]$. \\ \\
+(For this section, there seems to be no difference however I treat $E[X]$ like before as $E[\frac{1}{n}Y] = E[\frac{1}{n}X] = \frac{1}{n}E[X]$. Hence, no need for two versions of solutions.)
 \subsection*{Problem Part d:}
 What is the variance of $\frac{1}{n}Y$ (express in terms of $Var(X)$)? \\
 Hints: use linearity of the expectation and the fact that people are sampled independently.
 \subsection*{Solution Part d:}
+\subsubsection*{$E[X_1]$ version:}
+As $Y$ is a binomial variable: 
 \begin{eqnarray*}
-    Var[Y]  & = & n * Var[X] \\
+    Var[Y]  & = & n * Var[X_i] \\
     		 & = & n * 0.24 \\
-    Var[\frac{1}{n}Y]  & = & n * Var[\frac{1}{n} * X] \\
-    				   & = & \frac{1}{n}^2 * n * Var[X] \\
-    				   & = & \frac{Var[X]}{n}   			  
+    Var[\frac{1}{n}Y]  & = & n * Var[\frac{1}{n} * X_i] \\
+    				   & = & \frac{1}{n}^2 * n * Var[X_i] \\
+    				   & = & \frac{Var[X_i]}{n} \\	
+    				   & = & \frac{0.24}{n}		  
 \end{eqnarray*}
+\subsubsection*{$E[X]$ version:}
+if $E[X] = E[Y]$, then, by definition, $Var[X]=Var[Y]$, hence:
+\begin{equation*}
+Var[\frac{1}{n}Y]=Var[\frac{1}{n}X]=(\frac{1}{n})^2*Var[X]
+\end{equation*} 
 \newpage
 \section*{Question 3}
 Suppose that 2 balls are chosen without replacement from an urn consisting of 5 white and 8 red balls. Let $X_i$ equal 1 if the $i^{th}$ ball selected is white, and let it equal 0 otherwise.
